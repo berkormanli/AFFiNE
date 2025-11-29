@@ -5,6 +5,7 @@ export const databaseBlockViews: ViewMeta[] = [
   viewPresets.tableViewMeta,
   viewPresets.kanbanViewMeta,
   viewPresets.sprintViewMeta,
+  viewPresets.listViewMeta,
 ];
 
 export const databaseBlockViewMap = Object.fromEntries(

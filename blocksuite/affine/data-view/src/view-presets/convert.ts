@@ -1,5 +1,6 @@
 import { createViewConvert } from '../core/view/convert.js';
 import { kanbanViewModel } from './kanban/index.js';
+import { listViewModel } from './list/index.js';
 import { sprintViewModel } from './sprint/index.js';
 import { tableViewModel } from './table/index.js';
 
@@ -41,5 +42,24 @@ export const viewConverts = [
   createViewConvert(sprintViewModel, kanbanViewModel, data => ({
     filter: data.filter,
     groupBy: data.groupBy,
+  })),
+  // List view conversions
+  createViewConvert(tableViewModel, listViewModel, data => ({
+    filter: data.filter,
+  })),
+  createViewConvert(listViewModel, tableViewModel, data => ({
+    filter: data.filter,
+  })),
+  createViewConvert(kanbanViewModel, listViewModel, data => ({
+    filter: data.filter,
+  })),
+  createViewConvert(listViewModel, kanbanViewModel, data => ({
+    filter: data.filter,
+  })),
+  createViewConvert(sprintViewModel, listViewModel, data => ({
+    filter: data.filter,
+  })),
+  createViewConvert(listViewModel, sprintViewModel, data => ({
+    filter: data.filter,
   })),
 ];
