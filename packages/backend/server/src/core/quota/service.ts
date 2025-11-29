@@ -183,6 +183,11 @@ export class QuotaService {
   }
 
   async tryCheckSeat(workspaceId: string, excludeSelf = false) {
+    // Skip seat check for selfhosted instances - no member limits
+    if (env.selfhosted) {
+      return true;
+    }
+
     const quota = await this.getWorkspaceSeatQuota(workspaceId);
 
     return quota.memberCount - (excludeSelf ? 1 : 0) < quota.memberLimit;
